@@ -9,11 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="tb_usuario")
-
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -21,7 +18,7 @@ public class Usuario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
 	private String email;
 	private String senha;
@@ -30,7 +27,7 @@ public class Usuario implements Serializable{
 	public Usuario() {}
 
 
-	public Usuario(Integer id, String nome, String email, String senha) {
+	public Usuario(Long id, String nome, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -39,12 +36,12 @@ public class Usuario implements Serializable{
 	}
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -103,8 +100,10 @@ public class Usuario implements Serializable{
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
 	}
 	
-	
-	
+
+	public boolean isNovo() {
+		return getId() == null;
+	}
 	
 
 }
